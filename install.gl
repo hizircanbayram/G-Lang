@@ -1,0 +1,2 @@
+chmod +x glang
+sudo cp glang /usr/bin

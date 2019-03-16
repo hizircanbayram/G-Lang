@@ -1,0 +1,32 @@
+
+if [ -z "$1" ]
+then
+	echo "File name is needed"
+else
+	if [ ${1: -3} == ".gl" ]
+	then
+		echo "\"$1\")" >> ~/glang/lexer/var_lex.cl
+		cat ~/glang/lexer/var_lex.cl >> ~/glang/exe.cl
+		cat ~/glang/lexer/char_processing.cl >> ~/glang/exe.cl
+		cat ~/glang/lexer/io_processing.cl >> ~/glang/exe.cl
+		cat ~/glang/lexer/lex_processing.cl >> ~/glang/exe.cl
+		
+		cat ~/glang/parser/var_par.cl >> ~/glang/exe.cl
+		cat ~/glang/parser/helper.cl >> ~/glang/exe.cl
+		cat ~/glang/parser/query.cl >> ~/glang/exe.cl
+		cat ~/glang/parser/automata.cl >> ~/glang/exe.cl
+		cat ~/glang/parser/parse_processing.cl >> ~/glang/exe.cl
+		cat ~/glang/parser/error_processing.cl >> ~/glang/exe.cl
+		cat ~/glang/parser/tree_patterns.cl >> ~/glang/exe.cl
+	
+		cat ~/glang/main.cl >> ~/glang/exe.cl
+		clisp ~/glang/exe.cl
+		rm ~/glang/exe.cl
+		sed -i.bak -e '7d' ~/glang/lexer/var_lex.cl
+		rm ~/glang/lexer/var_lex.cl.bak
+		cat ~/glang/parse.tree
+		rm parse.tree
+	else
+		echo "File extension must be [.gl]"
+	fi
+fi
