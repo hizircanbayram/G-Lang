@@ -66,7 +66,8 @@ These instructions will get you a copy of the project up and running on your loc
 After downloading, go to directory where you downloaded the repository to. Then type
 
 ```
-mv gLang .
+mv gLang ~
+cd
 cd gLang
 ```
 
@@ -77,7 +78,7 @@ chmod +x install.gl
 ./install.gl
 ```
 
-These commands load the install.gl binary to your /usr/bin directory in order to call glang from any directory in your file system. Now we're ready to go.
+These commands load the install.gl binary to your /usr/bin directory in order to call gLang from any directory in your file system. Now we're ready to go.
 
 
 ### Uninstalling
@@ -110,7 +111,7 @@ Create a file, let's say sample.gl. Open it and type the following code sample.
   (+ x (sumup (- x 1)))))
 ```
 
-Then type the following so as to run it.
+Then type the following to run it.
 
 ```
 glang sample.gl
